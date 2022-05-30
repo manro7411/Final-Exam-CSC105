@@ -4,7 +4,7 @@ import {
   Card,
   CardImg,
   CardImgOverlay,
-  CardTitle,
+  CardTitle,Button
 } from "reactstrap";
 import DishDetail from "./DishdetailComponent";
 
@@ -20,7 +20,12 @@ function RenderMenuItem({ dish, onClick }) {
 }
 
 function renderDish(dish, comments) {
-  if (dish != null) return <DishDetail dish={dish} />;
+  if (dish != null) return (
+    <div>
+      <DishDetail dish={dish}/>
+      
+    </div>
+  );
   else return <div></div>;
 }
 

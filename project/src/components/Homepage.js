@@ -7,8 +7,6 @@ import {
   CardTitle,
   CardSubtitle,
 } from "reactstrap";
-
-
 function RenderCard({ item }) {
   return (
     <Card>
@@ -23,7 +21,6 @@ function RenderCard({ item }) {
     </Card>
   );
 }
-
 function Home(props) {
   return (
     <div className="container">

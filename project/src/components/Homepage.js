@@ -8,6 +8,7 @@ import {
   CardSubtitle,
 } from "reactstrap";
 
+
 function RenderCard({ item }) {
   return (
     <Card>

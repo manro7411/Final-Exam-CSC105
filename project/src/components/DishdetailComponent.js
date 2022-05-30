@@ -1,5 +1,5 @@
 import React , {useState} from "react";
-import { Card, CardImg, CardText, CardBody, CardTitle,Button ,Form,FormGroup,Label,Input} from "reactstrap";
+import { Card, CardImg, CardText, CardBody, CardTitle,Button ,Form,FormGroup,Label,Input,Modal,ModalHeader,ModalBody} from "reactstrap";
 
 
 const renderDish = (dish) => {
@@ -18,7 +18,9 @@ const renderDish = (dish) => {
 const DishDetail = ({ dish }) => {
   const [name,setnName ] = useState("");
   const [score,setScore ] = useState("");
-  const [comment,setComment ] = useState("")
+  const [comment,setComment ] = useState("");
+  const [open,setOpen] = useState(false);
+  const [number,setNumber] = useState(dish.like);
 
   const handleName = (e) =>{
     setnName(e.target.value);
@@ -29,12 +31,18 @@ const DishDetail = ({ dish }) => {
   const handleComment = (e) =>{
     setComment(e.target.value);
   }
+  const toggleModal = () =>{
+    setOpen(!open);
+  }
   const handleSumbmit = ()=>{
     let word = `    Username : ${name}
     Score : ${score}
     Comment : ${comment}`
     alert(word);
 }
+  const onLike = () =>{
+    setNumber(number+1);
+  }
   const taskvalidator = name !== ""
   return (
     <div className="row col-12">
@@ -53,9 +61,23 @@ const DishDetail = ({ dish }) => {
           <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" onChange={handleComment}/>
         </FormGroup>
       </Form>
-      <Button outline color="primary" onClick={handleSumbmit}>Submit</Button>
+      <Button className="me-2" outline color="primary" onClick={handleSumbmit}>Submit</Button>
+      <Button  onClick={toggleModal}>Info</Button>
+      <Modal isOpen={open} toggle={toggleModal}>
+                        <ModalHeader toggle={toggleModal}>number of like {number} </ModalHeader>
+                        <ModalBody>
+                        <Card>
+                        <CardImg top src={dish.image} alt={dish.name} />
+                        <CardBody>
+                            <CardTitle>{dish.name}</CardTitle>
+                            <CardText>{dish.description}</CardText>
+                        </CardBody>
+                    </Card>
+                        <Button className='my-3' onClick={onLike}>Like</Button>
+                        </ModalBody>
+                    </Modal>
       </div>      
-      <div className="col-12 col-md-5 m-1">
+      <div className="col-12 col-md-5 m-1 ">
       </div>
     </div>
   );

@@ -10,6 +10,7 @@ function Contact(props) {
         </div>
         <div className="col-12 col-sm-6 offset-sm-1">
           <h2>Ratchanon Traitiprat</h2>
+          <h5>--Learning is a lifelong journey--</h5>
           <hr></hr>
           <p>king mongkut's university of technology thonburi</p>
 
